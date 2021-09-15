@@ -1,3 +1,5 @@
+package basics
+
 import scala.annotation.tailrec
 import scala.math.pow
 
@@ -46,7 +48,7 @@ def formatBooleanResult(condition: String, n: Int, f: Int => Boolean) =
   println(message.format(n, condition, f(n)))
 
 @main
-def main() =
+def functions() =
   greeting("richard", 46)
   formatBigIntResult("factorial", 1000, factorial)
   formatBigIntResult("fibonacci", 10, fibonacci)
