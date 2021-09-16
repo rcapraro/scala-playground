@@ -4,6 +4,7 @@ object PersonObjects {
 
   object Person {
     val N_EYES = 2
+
     def canFly: Boolean = false
 
     //factory method

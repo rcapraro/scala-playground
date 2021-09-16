@@ -6,13 +6,13 @@
     "scala"
   ],
   "argv": [
-    "C:\\Program Files\\Eclipse Foundation\\jdk-11.0.12.7-hotspot/bin/java",
+    "/Users/richardcapraro/Library/Java/JavaVirtualMachines/openjdk-14.0.2/Contents/Home/bin/java",
     "-Xms100m",
     "-Xmx100m",
     "-classpath",
-    "C:/Users/rcapr/AppData/Local/JetBrains/Toolbox/apps/IDEA-U/ch-0/212.5080.55.plugins/Scala/launcher/sbt-launch.jar",
+    "/Users/richardcapraro/Library/Application Support/JetBrains/Toolbox/apps/IDEA-U/ch-0/212.5284.40/IntelliJ IDEA.app.plugins/Scala/launcher/sbt-launch.jar",
     "xsbt.boot.Boot",
     "-bsp",
-    "--sbt-launch-jar=C:/Users/rcapr/AppData/Local/JetBrains/Toolbox/apps/IDEA-U/ch-0/212.5080.55.plugins/Scala/launcher/sbt-launch.jar"
+    "--sbt-launch-jar=/Users/richardcapraro/Library/Application%20Support/JetBrains/Toolbox/apps/IDEA-U/ch-0/212.5284.40/IntelliJ%20IDEA.app.plugins/Scala/launcher/sbt-launch.jar"
   ]
 }
