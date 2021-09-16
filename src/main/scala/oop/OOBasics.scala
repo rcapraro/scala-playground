@@ -26,7 +26,7 @@ object OOBasics {
 
   @main
   def oop() =
-    val dickens = new Writer("Charles" ,  "Dickens",  1812)
+    val dickens = new Writer("Charles", "Dickens", 1812)
     val davidCopperfield = new Novel("David Copperfield", 1850, dickens)
     println(davidCopperfield isWrittenBy "Charles Dickens")
 }
