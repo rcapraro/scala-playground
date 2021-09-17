@@ -2,8 +2,8 @@ package generics
 
 object Generics {
 
-  class MyList[A] {
-
+  class MyList[+A] {
+    def add[B >:A](element: B): MyList[B] = ???
   }
 
   object MyList {
@@ -30,19 +30,26 @@ object Generics {
   // Hell No - contravariance
   class Trainer[-A]
 
+  class Cage[A <: Animal](animal: A)
+
   @main
   def testGenerics(): Unit = {
     val listOfIntegers = new MyList[Int]
     val listOfStrings = new MyList[String]
-    val emptyListOfIntegers = MyList.empty[Int]
+    // val emptyListOfIntegers = MyList.empty[Int]
 
     val animal: Animal = new Cat
     val covariantAnimalList: CovariantList[Animal] = new CovariantList[Cat]
-    // animalList.add(new Dog) ? HARD QUESTION
+
+    val catList = new MyList[Cat]
+    val animalList = catList.add(new Dog) //get transformed into a MyList[Animal]
 
     // val invariantAnimalList: InvariantList[Animal] = new InvariantList[Dog]  --- impossible
 
     val catTrainer: Trainer[Cat] = new Trainer[Animal]
+
+    //can accept only subclasses of Animal
+    val cage = new Cage(new Dog)
   }
 
 }
