@@ -32,7 +32,7 @@ object Exercise {
     override def toString: String = "[" + printElements + "]"
   }
 
-  object Empty extends MyList[Nothing] {
+  case object Empty extends MyList[Nothing] {
     override def head: Nothing = throw new NoSuchElementException
 
     override def tail: MyList[Nothing] = throw new NoSuchElementException
@@ -52,7 +52,7 @@ object Exercise {
     override def printElements: String = ""
   }
 
-  class Cons[A](h: A, t: MyList[A]) extends MyList[A] {
+  case class Cons[A](h: A, t: MyList[A]) extends MyList[A] {
     override def head: A = h
 
     override def tail: MyList[A] = t
