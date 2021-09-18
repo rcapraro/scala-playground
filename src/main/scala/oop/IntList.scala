@@ -1,39 +1,39 @@
 package oop
 
-abstract class MyList {
+abstract class IntList {
   def head: Int
 
-  def tail: MyList
+  def tail: IntList
 
   def isEmpty: Boolean
 
-  def add(element: Int): MyList
+  def add(element: Int): IntList
 
   protected[oop] def printElements: String
 
   override def toString: String = "[" + printElements + "]"
 }
 
-object Empty extends MyList {
+object Empty extends IntList {
   override def head: Int = throw new NoSuchElementException
 
-  override def tail: MyList = throw new NoSuchElementException
+  override def tail: IntList = throw new NoSuchElementException
 
   override def isEmpty: Boolean = true
 
-  override def add(element: Int): MyList = new Cons(element, Empty)
+  override def add(element: Int): IntList = new Cons(element, Empty)
 
   override def printElements: String = ""
 }
 
-class Cons(h: Int, t: MyList) extends MyList {
+class Cons(h: Int, t: IntList) extends IntList {
   override def head: Int = h
 
-  override def tail: MyList = t
+  override def tail: IntList = t
 
   override def isEmpty: Boolean = false
 
-  override def add(element: Int): MyList = new Cons(element, this)
+  override def add(element: Int): IntList = new Cons(element, this)
 
   override def printElements: String =
     if (t.isEmpty) s"$h"
