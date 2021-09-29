@@ -1,6 +1,6 @@
-package functions
+package mylist
 
-object ListExercise {
+object MyList {
 
   abstract class MyList[+A] {
     def head: A
@@ -27,7 +27,7 @@ object ListExercise {
 
     def fold[B](start: B)(operator: (B, A) => B): B
 
-    protected[functions] def printElements: String
+    protected[mylist] def printElements: String
 
     override def toString: String = "[" + printElements + "]"
   }
@@ -111,7 +111,7 @@ object ListExercise {
       else s"$h , ${t.printElements}"
   }
 
-  @main def testExerciceFunctions(): Unit = {
+  @main def testMyList(): Unit = {
     val intList = new Cons(1, new Cons(2, new Cons(3, new Cons(4, new Cons(5, Empty)))))
     val charList = new Cons("a", new Cons("b", new Cons("c", new Cons("d", new Cons("e", Empty)))))
 
@@ -128,5 +128,10 @@ object ListExercise {
     println(intList.zipWith(charList, (i, s) => s + i))
 
     println(intList.fold(0)(_ + _))
+
+    for {
+      n <- intList
+      c <- charList
+    } println(s"$c-$n")
   }
 }
