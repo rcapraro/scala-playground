@@ -85,7 +85,7 @@ object AllPatterns {
     }
 
     // returns a lit of strings !!!
-    // JVM tric question - type erasure !
+    // JVM trick question - type erasure !
 
   }
 }

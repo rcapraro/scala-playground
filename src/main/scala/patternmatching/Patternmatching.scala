@@ -7,7 +7,7 @@ object Patternmatching {
   @main
   def testpm(): Unit = {
 
-    //swithc on steroids
+    //switch on steroids
     val random = new Random()
     val x = random.nextInt(5)
 

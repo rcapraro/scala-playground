@@ -12,7 +12,7 @@ object PatternsEverywhere {
       case npe: NullPointerException => "npe"
       case _ => "something else"
     }
-    //catch are actuelly MATCHES !
+    //catch are actually MATCHES !
 
     val list = List(1, 2, 3, 4)
     val evenOnes = for {
@@ -31,7 +31,7 @@ object PatternsEverywhere {
 
     val tuple = (1, 2, 3)
     val (a, b, c) = tuple
-    //multiple value defintion based on pattern matching
+    //multiple value definition based on pattern matching
 
     val head :: tail = List(1, 2, 3, 4)
     println(head)
