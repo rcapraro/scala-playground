@@ -39,15 +39,15 @@ object MyList {
 
     override def isEmpty: Boolean = true
 
-    override def add[B >: Nothing](element: B): MyList[B] = new Cons(element, Empty)
+    override def add[B >: Nothing](element: B): MyList[B] = Cons(element, Empty)
 
-    override def filter(predicate: Nothing => Boolean) = Empty
+    override def filter(predicate: Nothing => Boolean): MyList[Nothing] = Empty
 
-    override def map[B](transformer: Nothing => B) = Empty
+    override def map[B](transformer: Nothing => B): MyList[Nothing] = Empty
 
     override def ++[B >: Nothing](list: MyList[B]): MyList[B] = list
 
-    override def flatMap[B](transformer: Nothing => MyList[B]) = Empty
+    override def flatMap[B](transformer: Nothing => MyList[B]): MyList[B] = Empty
 
     override def foreach(f: Nothing => Unit): Unit = ()
 
@@ -69,16 +69,16 @@ object MyList {
 
     override def isEmpty: Boolean = false
 
-    override def filter(predicate: A => Boolean) =
-      if predicate(h) then new Cons(h, t.filter(predicate))
+    override def filter(predicate: A => Boolean): MyList[A] =
+      if predicate(h) then Cons(h, t.filter(predicate))
       else t.filter(predicate)
 
-    override def add[B >: A](element: B): MyList[B] = new Cons(element, this)
+    override def add[B >: A](element: B): MyList[B] = Cons(element, this)
 
     override def map[B](transformer: A => B): MyList[B] =
-      new Cons(transformer(h), t.map(transformer))
+      Cons(transformer(h), t.map(transformer))
 
-    override def ++[B >: A](list: MyList[B]): MyList[B] = new Cons(h, t ++ list)
+    override def ++[B >: A](list: MyList[B]): MyList[B] = Cons(h, t ++ list)
 
     override def flatMap[B](transformer: A => MyList[B]): MyList[B] =
       transformer(h) ++ tail.flatMap(transformer)
@@ -91,17 +91,17 @@ object MyList {
     override def sort(compare: (A, A) => Int): MyList[A] = {
 
       def insert(x: A, sortedList: MyList[A]): MyList[A] =
-        if (sortedList.isEmpty) new Cons(x, Empty)
-        else if (compare(x, sortedList.head) <= 0) new Cons(x, sortedList)
-        else new Cons(sortedList.head, insert(x, sortedList.tail))
+        if (sortedList.isEmpty) Cons(x, Empty)
+        else if (compare(x, sortedList.head) <= 0) Cons(x, sortedList)
+        else Cons(sortedList.head, insert(x, sortedList.tail))
 
-      val sortedtail = t.sort(compare)
-      insert(h, sortedtail)
+      val sortedTail = t.sort(compare)
+      insert(h, sortedTail)
     }
 
     override def zipWith[B, C](list: MyList[B], zip: (A, B) => C): MyList[C] =
       if (list.isEmpty) throw new RuntimeException("Lists do not have the same length")
-      else new Cons(zip(h, list.head), tail.zipWith(list.tail, zip))
+      else Cons(zip(h, list.head), tail.zipWith(list.tail, zip))
 
     override def fold[B](start: B)(operator: (B, A) => B): B =
       t.fold(operator(start, h))(operator)
@@ -112,14 +112,14 @@ object MyList {
   }
 
   @main def testMyList(): Unit = {
-    val intList = new Cons(1, new Cons(2, new Cons(3, new Cons(4, new Cons(5, Empty)))))
-    val charList = new Cons("a", new Cons("b", new Cons("c", new Cons("d", new Cons("e", Empty)))))
+    val intList = Cons(1, Cons(2, Cons(3, Cons(4, Cons(5, Empty)))))
+    val charList = Cons("a", Cons("b", Cons("c", Cons("d", Cons("e", Empty)))))
 
     println(intList.map(elem => "number " + elem))
 
     println(intList.filter(_ % 2 == 1))
 
-    println(intList.flatMap(elt => new Cons(elt, new Cons(elt * 10, Empty))))
+    println(intList.flatMap(elt => Cons(elt, Cons(elt * 10, Empty))))
 
     intList.foreach(println)
 
